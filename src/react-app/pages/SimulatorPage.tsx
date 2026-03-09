@@ -5,7 +5,7 @@ import {
 	formatFieldPosition,
 	formatScoreDifferential,
 	type SimulatorInput,
-} from "../utils/simulator";
+} from "../utils/fourthDownModel";
 
 export function SimulatorPage() {
 	const [input, setInput] = useState<SimulatorInput>(defaultSimulatorInput);
@@ -152,16 +152,13 @@ export function SimulatorPage() {
 							</div>
 							<div>
 								<span>Field goal</span>
-								<strong>
-									{summary.fieldGoal.isAvailable
-										? summary.fieldGoal.expectedValue.toFixed(2)
-										: "Out of range"}
-								</strong>
+								<strong>{summary.fieldGoal.expectedValue.toFixed(2)}</strong>
 							</div>
 						</div>
 						<p className="simulator-note">
-							Version 1 uses simplified expected-points assumptions. The logic is
-							deliberately inspectable so the model can be refined later.
+							The model uses transparent expected-points assumptions, distance
+							lookups, and only light late-game adjustments so the recommendation
+							stays easy to inspect.
 						</p>
 					</div>
 				</div>
